@@ -15,16 +15,16 @@ ABotAIController::ABotAIController()
 	PawnSensingComp = CreateDefaultSubobject<UPawnSensingComponent>(FName("PawnSensingComp"));
 	PawnSensingComp->SensingInterval = .25f;
 	PawnSensingComp->bOnlySensePlayers = true;
-	PawnSensingComp->SetPeripheralVisionAngle(180.f);
+	PawnSensingComp->SetPeripheralVisionAngle(180.f); 
 	PawnSensingComp->SightRadius = 3000.f;
 
-	BehaviorTreeComp = CreateDefaultSubobject<UBehaviorTreeComponent>(FName("BehaviorTreeComponent"));
+	BehaviorTreeComp = CreateDefaultSubobject<UBehaviorTreeComponent>(FName("BehaviorTreeComp"));
 	BlackBoardComp = CreateDefaultSubobject<UBlackboardComponent>(FName("BlackBoardComp"));
 }
 
 void ABotAIController::OnPossess(APawn* InPawn)
 {
-	Super::Possess(InPawn);
+	Super::OnPossess(InPawn);
 	PawnSensingComp->OnSeePawn.AddDynamic(this, &ABotAIController::OnSeePawn);
 
 	if (BehaviorTree) {
