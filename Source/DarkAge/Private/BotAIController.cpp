@@ -10,20 +10,10 @@
 
 ABotAIController::ABotAIController()
 {
-	// construtor que cria o component de sensores do BotInimigo
 	PawnSensingComp = CreateDefaultSubobject<UPawnSensingComponent>(FName("PawnSensingComp"));
-	
-	// aqui define como os sensores do inimigo deverão atuar
-	// deve fazer a varredura sensorial a cada 1/4 de segundo .25
-	PawnSensingComp->SensingInterval = .25f;
-
-	// detecção sensivel apenas de Players(Jogadores)
+	PawnSensingComp->SensingInterval = 0.25f;
 	PawnSensingComp->bOnlySensePlayers = true;
-	
-	// o angulo de visão de detecção deve ser de 180 graus, isso facilita também ver as costas
-	PawnSensingComp->SetPeripheralVisionAngle(180.f); 
-
-	// o raio de visão será de 3000 unidades
+	PawnSensingComp->SetPeripheralVisionAngle(180.f);
 	PawnSensingComp->SightRadius = 3000.f;
 
 	BehaviorTreeComp = CreateDefaultSubobject<UBehaviorTreeComponent>(FName("BehaviorTreeComp"));

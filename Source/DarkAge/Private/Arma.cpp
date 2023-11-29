@@ -1,6 +1,3 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
-
 #include "Arma.h"
 #include "Components/SkeletalMeshComponent.h"
 #include "Components/ArrowComponent.h"
@@ -17,11 +14,10 @@
 #include "Materials/MaterialInterface.h"
 #include "Math/UnrealMathUtility.h"
 #include "Sound/SoundBase.h"
+#include "GameFramework/Character.h"
 
-// Sets default values
 AArma::AArma()
 {
- 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
 	EfeitoMuzzle = nullptr;
@@ -45,14 +41,12 @@ AArma::AArma()
 	SetaArma->SetRelativeScale3D(FVector(0.3f, 0.8f, 0.7f));
 }
 
-// Called when the game starts or when spawned
 void AArma::BeginPlay()
 {
 	Super::BeginPlay();
 	
 }
 
-// Called every frame
 void AArma::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
@@ -83,7 +77,7 @@ void AArma::Atirar()
 			UE_LOG(LogTemp, Warning, TEXT("Acertou em Algo"));
 			AActor* Ator = InfoImpacto.GetActor();
 			
-			if (Ator->GetClass()->IsChildOf(ASkeletalMeshActor::StaticClass()) && ImpactoSangue) {
+			if (Ator->GetClass()->IsChildOf(ACharacter::StaticClass()) && ImpactoSangue) {
 				UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), ImpactoSangue, InfoImpacto.Location, InfoImpacto.ImpactNormal.Rotation(), true);
 			}
 			else if (ImpactoGeral) {
@@ -93,8 +87,6 @@ void AArma::Atirar()
 			}
 		}
 
-		//DrawDebugLine(GetWorld(), Inicio, Fim, FColor::Red, false, 5.0f, (uint8)0, 1.0f);
-	
 		if (EfeitoMuzzle) {
 			FVector Localizacao = SetaArma->GetComponentLocation();
 			FRotator Rotacao = SetaArma->GetComponentRotation();
