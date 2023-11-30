@@ -15,8 +15,8 @@ void ABotCharacter::BeginPlay()
 	Super::BeginPlay();
 	FActorSpawnParameters Parametros;
 	Parametros.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+	
 	ArmaInimigo = GetWorld()->SpawnActor<AArma>(BP_ArmaRifle, FTransform(), Parametros);
-
 	ArmaInimigo->AttachToComponent(Cast<USceneComponent>(GetMesh()), FAttachmentTransformRules::SnapToTargetIncludingScale, FName("SocketArma"));
 }
 
@@ -31,4 +31,3 @@ void ABotCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompon
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
 }
-

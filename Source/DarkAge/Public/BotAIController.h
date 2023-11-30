@@ -4,9 +4,7 @@
 #include "AIController.h"
 #include "BotAIController.generated.h"
 
-/**
- * 
- */
+
 UCLASS()
 class DARKAGE_API ABotAIController : public AAIController
 {

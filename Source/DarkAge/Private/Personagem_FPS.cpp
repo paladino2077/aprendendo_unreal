@@ -8,10 +8,15 @@
 #include "Engine/World.h"
 #include "Arma.h"
 #include "Engine/EngineTypes.h"
+#include "Engine/Engine.h"
+#include "Components/ArrowComponent.h"
+#include "Components/SceneComponent.h"
+#include "WorldCollision.h"
 
 APersonagem_FPS::APersonagem_FPS()
 {
 	PrimaryActorTick.bCanEverTick = true;
+	bEstaPulando = false;
 
 	SpringArmCamera = CreateDefaultSubobject<USpringArmComponent>(FName("SpringArmCamera")); 
 	SpringArmCamera->TargetArmLength = 200.f;

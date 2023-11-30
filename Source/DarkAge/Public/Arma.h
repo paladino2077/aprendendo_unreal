@@ -15,16 +15,16 @@ public:
 protected:
 	virtual void BeginPlay() override;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Arma", meta = (AllowPrivateAccess = "true"));
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Arma", meta = (AllowPrivateAccess = "true"))
 	class USkeletalMeshComponent* MalhaDaArma;
 
 	UPROPERTY(EditAnywhere, Category = "Arma")
 	class USoundBase* SomTiro;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Arma", meta = (AllowPrivateAccess = "true"))
-	class UArrowComponent* SetaArma; 
+	class UArrowComponent* SetaArma;
 
-	UPROPERTY(EditAnywhere, Category = "EfeitosArma")
+	UPROPERTY(EditAnywhere, Category = "EfeitosDaArma")
 	class UParticleSystem* EfeitoMuzzle;
 
 	UPROPERTY(EditAnywhere, Category = "EfeitosImpacto")

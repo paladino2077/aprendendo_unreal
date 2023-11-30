@@ -15,6 +15,7 @@ ABotAIController::ABotAIController()
 	PawnSensingComp->bOnlySensePlayers = true;
 	PawnSensingComp->SetPeripheralVisionAngle(180.f);
 	PawnSensingComp->SightRadius = 3000.f;
+
 	BehaviorTreeComp = CreateDefaultSubobject<UBehaviorTreeComponent>(FName("BehaviorTreeComp"));
 	BlackBoardComp = CreateDefaultSubobject<UBlackboardComponent>(FName("BlackBoardComp"));
 }

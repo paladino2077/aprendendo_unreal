@@ -9,23 +9,23 @@ class DARKAGE_API ABotCharacter : public ACharacter
 {
 	GENERATED_BODY()
 
-	public:
-		ABotCharacter();
+public:
+	ABotCharacter();
 
-	protected:
-		virtual void BeginPlay() override;
+protected:
+	virtual void BeginPlay() override;
+
+	UPROPERTY(EditAnywhere, Category = "Arma")
+	TSubclassOf<class AArma> BP_ArmaRifle;
 		
-		UPROPERTY(EditAnywhere, Category = "Arma")
-		TSubclassOf<class AArma> BP_ArmaRifle;
-		
-		UPROPERTY(EditDefaultsOnly, Category = "Health")
-		float Health;
+	UPROPERTY(EditDefaultsOnly, Category = "Health")
+	float Health;
 
-	public:	
-		virtual void Tick(float DeltaTime) override;
+public:	
+	virtual void Tick(float DeltaTime) override;
 
-		virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
-	
-		class AArma* ArmaInimigo;
+	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+
+	class AArma* ArmaInimigo;
 
 };

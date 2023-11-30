@@ -10,11 +10,9 @@ class DARKAGE_API APersonagem_FPS : public ACharacter
 	GENERATED_BODY()
 
 public:
-	// Sets default values for this character's properties
 	APersonagem_FPS();
 
 protected:
-	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
 	void MoverFrenteTras(float Valor);
@@ -50,10 +48,8 @@ public:
 
 	void Atirar();
 
-	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 };
