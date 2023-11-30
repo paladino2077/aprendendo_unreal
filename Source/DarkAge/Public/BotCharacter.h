@@ -14,8 +14,12 @@ class DARKAGE_API ABotCharacter : public ACharacter
 
 	protected:
 		virtual void BeginPlay() override;
+		
 		UPROPERTY(EditAnywhere, Category = "Arma")
 		TSubclassOf<class AArma> BP_ArmaRifle;
+		
+		UPROPERTY(EditDefaultsOnly, Category = "Health")
+		float Health;
 
 	public:	
 		virtual void Tick(float DeltaTime) override;

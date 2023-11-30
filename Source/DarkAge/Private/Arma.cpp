@@ -1,20 +1,16 @@
 #include "Arma.h"
 #include "Components/SkeletalMeshComponent.h"
 #include "Components/ArrowComponent.h"
-#include "Engine/EngineTypes.h"
-#include "CollisionQueryParams.h"
-#include "Engine/World.h"
+#include "Kismet/GameplayStatics.h"
+#include "Particles/ParticleSystem.h"
 #include "DrawDebugHelpers.h"
 #include "UObject/ConstructorHelpers.h"
 #include "Engine/SkeletalMesh.h"
-#include "WorldCollision.h"
-#include "Particles/ParticleSystem.h"
-#include "Kismet/GameplayStatics.h"
+#include "Engine/World.h"
 #include "Animation/SkeletalMeshActor.h"
 #include "Materials/MaterialInterface.h"
 #include "Math/UnrealMathUtility.h"
 #include "Sound/SoundBase.h"
-#include "GameFramework/Character.h"
 
 AArma::AArma()
 {
@@ -29,18 +25,20 @@ AArma::AArma()
 	MalhaDaArma = CreateDefaultSubobject<USkeletalMeshComponent>(FName("MalhaDaArma"));
 	ConstructorHelpers::FObjectFinder<USkeletalMesh>MeshDaArma(TEXT("SkeletalMesh'/Game/Weapons/Rifle.Rifle'"));
 
-	if (MeshDaArma.Succeeded()) {
+	if (MeshDaArma.Succeeded())
+	{
 		MalhaDaArma->SetSkeletalMesh(MeshDaArma.Object);
 	}
 
 	RootComponent = MalhaDaArma;
 
-	SetaArma = CreateDefaultSubobject<UArrowComponent>(FName("SetaCanoArma"));
+	SetaArma = CreateDefaultSubobject<UArrowComponent>(FName("SetaCanodaArma"));
+
 	SetaArma->SetupAttachment(MalhaDaArma, FName("MuzzleFlashSocket"));
 	SetaArma->SetRelativeLocation(FVector(1.5f, 0.f, -1.2f));
 	SetaArma->SetRelativeScale3D(FVector(0.3f, 0.8f, 0.7f));
-}
 
+}
 void AArma::BeginPlay()
 {
 	Super::BeginPlay();
@@ -77,7 +75,7 @@ void AArma::Atirar()
 			UE_LOG(LogTemp, Warning, TEXT("Acertou em Algo"));
 			AActor* Ator = InfoImpacto.GetActor();
 			
-			if (Ator->GetClass()->IsChildOf(ACharacter::StaticClass()) && ImpactoSangue) {
+			if (Ator->GetClass()->IsChildOf(ASkeletalMeshActor::StaticClass()) && ImpactoSangue) {
 				UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), ImpactoSangue, InfoImpacto.Location, InfoImpacto.ImpactNormal.Rotation(), true);
 			}
 			else if (ImpactoGeral) {

@@ -1,5 +1,3 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
 #pragma once
 
 #include "CoreMinimal.h"
@@ -36,6 +34,9 @@ protected:
 
 	UPROPERTY(BlueprintReadOnly, Category = "Pulo")
 	bool bEstaPulando;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Health")
+	float Health;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Camera")
 	class UCameraComponent* CameraPersonagem;
